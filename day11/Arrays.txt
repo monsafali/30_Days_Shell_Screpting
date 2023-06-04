@@ -1,0 +1,35 @@
+os=('ubuntu' 'windows' 'kali')
+echo "${os[@]}
+echo "${os[1]}
+
+#how to prient the index of the array
+echo "${!os[@]}
+out = 1 2 3
+for example if we need to lenght of the arry
+echo "${#os[@]}
+not the lenght of the array print how much 
+eliment have in the
+
+how to add new item
+
+os[3] == 'mac'
+
+echo "${os[@]}
+now you check new mac itme add
+
+if we update
+
+os[0] = 'centos' 
+
+how to remove item in the array
+
+use unset then the name of the arry
+inside the indext of the item what item 
+you want to remove 
+
+unset os[3]
+
+for example
+string=abcdevgjgklam
+echo "${string[@]}
+
