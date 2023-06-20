@@ -1,0 +1,96 @@
+Lecture 8 : Positional parameter in Bash script
+==================================
+1:
+$0 --> Program or script name
+$1 - $9 --> Parameter called or passed
+$# --> Count total numbers of parameters passed
+$* --> Display all parameters passed
+$@ same as $* both are same
+$$ --> Provide the current PID of shell
+-----------------------------------------------------------------------------------------------
+2:-
+#!/bin/bash
+echo "This is positional parameter example script" $0
+echo "Hello, My name is : " $1
+echo "Here is " $2
+echo "this is " $3
+echo "total count value is " $#
+echo "Display the parameter the passed" $*
+echo "Fetch information" $@
+echo "PID of current shell"
+echo "Exit status of last executed command " $?
+-----------------------------------------------------------------------------------------------
+3:-
+Without positional parameters
+
+#!/bin/bash
+read -p "Enter service name you want to check: " ser_name
+read -p "Enter the status: " status
+sudo systemctl $status $ser_name
+
+./without_positional_para.sh 
+
+Enter service name you want to check: docker
+Enter the status: status
+
+shows docker status
+-----------------------------------------------------------------------------------------------
+4:- 
+
+With positional parameters
+#!/bin/bash
+service_name=$1
+status=$2
+sudo systemctl $status $service_name
+
+./with_positional_para.sh docker status
+shows status
+This is much more compact and easy to write and use
+-----------------------------------------------------------------------------------------------
+5:- 
+To remove confiusion in positional parameters scripts
+
+#!/bin/bash
+echo ' '
+service_name=$1
+status=$2
+
+if [[ $# -ne 2 ]]
+then
+        echo "Hey Admin, sorry to intrupt but you parameters are wrong"
+        echo "Please use the following syntax to run this script"
+        echo "Syntax: $0 service_name Action_name"
+        echo ' '
+        echo "Valid Actions: start | status |stop"
+
+else
+        sudo systemctl $status $service_name
+
+fi
+
+
+In the above if statement we wrote that if positional parameters are not equal to 2 then ask admin to read the following.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
