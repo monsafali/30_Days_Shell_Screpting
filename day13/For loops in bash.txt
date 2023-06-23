@@ -1,0 +1,105 @@
+Lecture 10 : For loop in Bash script.
+==========================
+1:- 
+For loops:
+Syntax -
+
+For variable in list
+do
+        echo "statement or logic"
+done
+-----------------------------------------------------------------------------------------------
+E.g
+#!/bin/bash
+for var in 1 2 3 4 5
+do
+        echo "Hello-$var"
+done
+-------------------------------------
+#!/bin/bash
+for i in {1..10}
+do
+        echo "Hello $i"
+done
+-------------------------------------
+#!/bin/bash
+for i in {1..10..2}
+do
+        echo "Hello $i"
+done
+-----------------------------------------------------------------------------------------------
+2:
+Use of for loops in bash scripts.
+#!/bin/bash
+echo ''
+echo -n "ENter file to check permissions: "
+read perm
+for file in $perm
+do
+        if [[ -x $file ]]
+        then
+                echo "$file is executeable"
+        else
+                echo "$file is no executeable"
+        fi
+done
+
+
+echo ''
+-----------------------------------------------------------------------------------------------
+3:
+1for i in $(pwd)
+2                do
+3                        if [[ ! -e $(pwd)/$ext  ]]
+4                        then
+5                                echo "No file found"
+6
+7                        else
+8                                ls -ltrh *.txt
+9                        fi
+10                done
+
+Line 3
+
+if [[ ! -e $(pwd)/$ext  ]]
+
+- pwd    
+  returns the current working directory.
+
+- $(pwd)/"filename"    
+  concatenates the current working directory and the string "filename" to form the file path.
+
+- The -e    
+  flag checks if the file path exists
+
+- The ! operator   
+   negates the result of the command, so the entire command will 
+   evaluate to true if the file does not exist in the current directory.
+
+
+So in summary, the command checks if the file named "filename" does not exist in the current directory.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
