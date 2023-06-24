@@ -1,0 +1,144 @@
+Lecture 11 : While loop in Bash script.
+============================
+1:-
+Infinity loop --> No limits in your condition
+Conditions:
+>, <, <=, >=, ==, !=
+
+While loops syntax:
+while statement
+do
+      statement
+done
+-----------------------------------------------------------------------------------------------
+2:-
+ Goes until ctrl + c
+#!/bin/bash
+while true
+do
+        echo "RAM check"
+done
+-----------------------------------------------------------------------------------------------
+3:-
+Goes from 1 to 10
+
+#!/bin/bash
+start = 1
+while [[ $start -le 10 ]]
+do
+        echo "Check Ram: $start"
+        ((start++))
+
+done
+-----------------------------------------------------------------------------------------------
+4:-
+Goes from 10 to 1
+
+#!/bin/bash
+start = 10
+while [[ $start -ge 1 ]]
+do
+        echo "Check Ram: $start"
+        ((start--))
+
+done
+-----------------------------------------------------------------------------------------------
+5:-
+Question asked in interview:
+Reading file Contents:-
+Syntax
+While read line
+do
+      statement
+done < filename
+
+while read statment is compulsory to make while loop read a file
+
+E.g
+#!/bin/bash
+file="/bash/test_scripts/test_data"
+while read each_line
+do
+        echo "$each_line"
+done < $file
+
+Best practices is to give full file path
+
+
+#!/bin/bash
+file="/bash/test_scripts/test_data"
+ls -ltrh | while read each_line
+do
+        echo "$each_line"
+done < $file
+-----------------------------------------------------------------------------------------------
+6:-
+While loops with IFS
+IFS:- Internal field separator 
+
+Syntax
+while IFS="separator" read var1 var2 var3
+do
+      statement
+done < filename
+
+
+cat file
+1, ansible, 192.168.18.1
+2, apache , 192.168.18.2
+
+var1 is 1, var2 is ansible , var3 is 192.168.18.1
+
+#!/bin/bash
+file="test_data"
+cat $file | while IFS="," read var1 var2 var3
+do
+        echo $var3
+done < $file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
